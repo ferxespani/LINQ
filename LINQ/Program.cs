@@ -12,11 +12,11 @@ namespace LINQ
         {
             List<Person> persons = new List<Person>()
             {
-                new Person{ Name = "Vitaliy", Age = 21, ID = 66, Father = 23, Gender = 'm'},
-                new Person{ Name = "Lena", Age = 45, ID = 23, Father = 34, Gender = 'w'},
+                new Person{ Name = "Vitaliy", Age = 21, ID = 66, Father = 59, Gender = 'm'},
+                new Person{ Name = "Lena", Age = 45, ID = 59, Father = 34, Gender = 'w'},
                 new Person{ Name = "Lock", Age = 70, ID = 23, Father = 29, Gender = 'm'},
-                new Person{ Name = "John", Age = 56, ID = 29, Father = 22, Gender = 'm'},
-                new Person{ Name = "Veronica", Age = 22, ID = 22, Father = 77, Gender = 'w'},
+                new Person{ Name = "John", Age = 56, ID = 29, Father = 59, Gender = 'm'},
+                new Person{ Name = "Veronica", Age = 22, ID = 22, Father = 33, Gender = 'w'},
                 new Person{ Name = "Ira", Age = 28, ID = 2, Father = 66, Gender = 'w'},
                 new Person{ Name = "Maksim", Age = 66, ID = 23, Father = 59, Gender = 'm'}
             };
@@ -51,6 +51,18 @@ namespace LINQ
 
             foreach (var item in result4)
                 Console.WriteLine(item.Name1 + " - " + item.Name2 + " - " + item.Name3);
+
+            var result5 = from p in persons
+                          group p by p.Father;
+            Console.WriteLine();
+            
+            foreach(IGrouping<int, Person> p in result5)
+            {
+                Console.WriteLine(p.Key);
+                foreach (var t in p)
+                    Console.WriteLine(t.Name);
+                Console.WriteLine();
+            }
         }
     }
 
